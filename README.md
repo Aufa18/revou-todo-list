@@ -1,9 +1,3 @@
-# revou-todo-list
-
-# Todo-List Live Dashboard
-
----
-
 ## Overview
 
 **Todo-List Live Dashboard** is a modern web app design to improve daily productivity by combining:
