@@ -5,6 +5,7 @@
 * Task management
 * Focus timer (Pomodoro)
 * Quick access links
+* Light/Dark theme
 
 All features are packed into one interactive dashboard without page reloads, providing a fast and efficient user experience.
 
@@ -59,5 +60,4 @@ todo-list-live-dashboard/
 
 ## Author
 
-**Aufa Wicaksono**
-Future Fullstack Developer
+👨‍💻 **Aufa Wicaksono**
