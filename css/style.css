@@ -1,0 +1,620 @@
+/* ============================================================
+   CSS Custom Properties (Theme Variables)
+   ============================================================ */
+:root {
+  --color-bg: #0f1117;
+  --color-surface: #1a1d27;
+  --color-accent: #6c63ff;
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-text-heading: #f8fafc;
+  --color-border: #2d3148;
+  --color-danger: #ef4444;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* ============================================================
+   Light Theme Override
+   Applied when <html data-theme="light">
+   ============================================================ */
+[data-theme="light"] {
+  --color-bg: #f0f2f8;
+  --color-surface: #ffffff;
+  --color-accent: #5b52e0;
+  --color-text: #1e2130;
+  --color-text-muted: #1d232b;
+  --color-text-heading: #0f1117;
+  --color-border: #d1d5e8;
+  --color-danger: #dc2626;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .btn:hover,
+[data-theme="light"] .btn:focus-visible {
+  background-color: #c7cbe0;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ============================================================
+   Accessibility Utility
+   ============================================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================================
+   Site Header
+   ============================================================ */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.site-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  letter-spacing: 0.02em;
+}
+
+/* Header action buttons group */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Shared style for icon-only header buttons */
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+.icon-btn:hover,
+.icon-btn:focus-visible {
+  color: var(--color-accent);
+  background-color: rgba(108, 99, 255, 0.12);
+  outline: none;
+}
+
+.settings-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+.settings-btn:hover,
+.settings-btn:focus-visible {
+  color: var(--color-accent);
+  background-color: rgba(108, 99, 255, 0.12);
+  outline: none;
+}
+
+/* ============================================================
+   Settings Panel
+   ============================================================ */
+.settings-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background-color: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5);
+  padding: 2rem 1.5rem;
+  z-index: 100;
+  transition: transform 0.25s ease;
+}
+
+.settings-panel--hidden {
+  transform: translateX(100%);
+}
+
+.settings-panel__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.settings-panel__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.settings-panel__label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.settings-panel__label input[type="checkbox"] {
+  accent-color: var(--color-accent);
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.settings-panel__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition: color 0.2s;
+}
+
+.settings-panel__close:hover,
+.settings-panel__close:focus-visible {
+  color: var(--color-text-heading);
+  outline: none;
+}
+
+/* Settings sections (name, visibility, etc.) */
+.settings-section {
+  margin-bottom: 1.5rem;
+}
+
+.settings-section__label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+}
+
+.settings-name-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.settings-name-row .text-input {
+  flex: 1;
+}
+
+/* ============================================================
+   Dashboard Grid Layout
+   ============================================================ */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "clock     clock"
+    "timer     todos"
+    "bookmarks todos";
+  gap: 1.25rem;
+}
+
+/* ============================================================
+   Widget Base Card
+   ============================================================ */
+.widget {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+  min-width: 0;
+}
+
+#widget-clock {
+  grid-area: clock;
+  text-align: center;
+}
+
+#widget-timer {
+  grid-area: timer;
+  text-align: center;
+}
+
+#widget-todos {
+  grid-area: todos;
+  align-self: stretch;
+}
+
+#widget-bookmarks {
+  grid-area: bookmarks;
+  align-self: stretch;
+}
+
+.clock-time {
+  font-size: 2.2rem;
+}
+
+#widget-timer,
+#widget-todos {
+  min-height: 220px;
+}
+
+/* bookmark-input-group is defined in the Bookmarks Widget section below */
+
+.widget--hidden {
+  display: none;
+}
+
+.widget__heading {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   Clock Widget
+   ============================================================ */
+.clock-greeting {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.clock-time {
+  font-size: 2.75rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--color-text-heading);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.clock-date {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* ============================================================
+   Timer Widget
+   ============================================================ */
+.timer-display {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--color-text-heading);
+  letter-spacing: 0.06em;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Duration setter row below the controls */
+.timer-duration-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+}
+
+.timer-duration-input {
+  width: 4.5rem;
+  text-align: center;
+  padding: 0.35rem 0.5rem;
+}
+
+.timer--done {
+  border-color: var(--color-accent);
+  box-shadow:
+    0 0 0 3px rgba(108, 99, 255, 0.35),
+    var(--shadow);
+}
+
+.timer--done .timer-display {
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   To-Do List Widget
+   ============================================================ */
+.todo-input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.todo-input-row .text-input {
+  flex: 1;
+}
+
+/* To-Do item title — done state */
+.todo-title {
+  flex: 1;
+  word-break: break-word;
+}
+
+.todo-title--done {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+/* Inline edit input inside a todo <li> */
+.todo-edit-input {
+  flex: 1;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Small icon-style button (Edit) */
+.btn--icon {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--color-text-muted);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.btn--icon:hover,
+.btn--icon:focus-visible {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background-color: rgba(108, 99, 255, 0.08);
+  outline: none;
+}
+
+/* ============================================================
+   Bookmarks Widget
+   ============================================================ */
+.bookmark-input-group {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 0.6rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.bookmark-input-group .btn {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: 0.75rem;
+}
+
+/* Bookmark link — styled as a clickable card/button */
+.bookmark-link {
+  flex: 1;
+  display: flex;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  word-break: break-all;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+.bookmark-link:hover,
+.bookmark-link:focus-visible {
+  color: #fff;
+  background-color: rgba(51, 50, 70, 0.18);
+  outline: none;
+  /* text-decoration: underline; */
+}
+
+/* ============================================================
+   Shared Form Controls
+   ============================================================ */
+.text-input {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text);
+  padding: 0.45rem 0.75rem;
+  width: 100%;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.text-input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.7;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+.input-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+  background-color: var(--color-border);
+  border: none;
+  border-radius: 6px;
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.45rem 0.9rem;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+  white-space: nowrap;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background-color: #3a3f5c;
+  outline: none;
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background-color: #5a52d5;
+}
+
+.btn--danger {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--color-text-muted);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.btn--danger:hover,
+.btn--danger:focus-visible {
+  color: var(--color-danger);
+  border-color: var(--color-danger);
+  background-color: rgba(239, 68, 68, 0.08);
+}
+
+/* ============================================================
+   Item Lists (shared by todos and bookmarks)
+   ============================================================ */
+.item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.bookmark-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bookmark-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   Responsive — single breakpoint at 768px
+   ============================================================ */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "clock"
+      "timer"
+      "todos"
+      "bookmarks";
+  }
+}

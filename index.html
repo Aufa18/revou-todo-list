@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <h1 class="site-title">Dashboard</h1>
+    <div class="header-actions">
+      <button id="theme-toggle-btn" class="icon-btn" aria-label="Toggle light/dark mode" title="Toggle theme">&#9790;</button>
+      <button id="settings-btn" class="settings-btn" aria-label="Open settings">&#9881;</button>
+    </div>
+  </header>
+
+  <div id="settings-panel" class="settings-panel settings-panel--hidden" aria-hidden="true">
+    <h2 class="settings-panel__title">Settings</h2>
+
+    <!-- Name preference -->
+    <div class="settings-section">
+      <label for="user-name-input" class="settings-section__label">Your name</label>
+      <div class="settings-name-row">
+        <input
+          type="text"
+          id="user-name-input"
+          class="text-input"
+          placeholder="e.g. Aufa"
+          aria-label="Your name for the greeting"
+          maxlength="40"
+        />
+        <button id="user-name-save-btn" class="btn btn--primary">Save</button>
+      </div>
+    </div>
+
+    <!-- Widget visibility -->
+    <div class="settings-section">
+      <p class="settings-section__label">Widgets</p>
+      <ul class="settings-panel__list">
+        <li>
+          <label class="settings-panel__label">
+            <input type="checkbox" data-widget="clock" checked />
+            Clock
+          </label>
+        </li>
+        <li>
+          <label class="settings-panel__label">
+            <input type="checkbox" data-widget="timer" checked />
+            Focus Timer
+          </label>
+        </li>
+        <li>
+          <label class="settings-panel__label">
+            <input type="checkbox" data-widget="todos" checked />
+            To-Do List
+          </label>
+        </li>
+        <li>
+          <label class="settings-panel__label">
+            <input type="checkbox" data-widget="bookmarks" checked />
+            Quick Links
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <button id="settings-close-btn" class="settings-panel__close" aria-label="Close settings">&#10005;</button>
+  </div>
+
+  <main class="dashboard-grid">
+
+    <section id="widget-clock" class="widget">
+      <h2 class="widget__heading">Clock</h2>
+      <p id="clock-greeting" class="clock-greeting"></p>
+      <p id="clock-time" class="clock-time"></p>
+      <p id="clock-date" class="clock-date"></p>
+    </section>
+
+    <section id="widget-timer" class="widget">
+      <h2 class="widget__heading">Focus Timer</h2>
+      <p id="timer-display" class="timer-display">25:00</p>
+      <div class="timer-controls">
+        <button id="timer-start-btn" class="btn btn--primary">Start</button>
+        <button id="timer-stop-btn" class="btn">Stop</button>
+        <button id="timer-reset-btn" class="btn">Reset</button>
+      </div>
+      <div class="timer-duration-row">
+        <label for="timer-duration-input" class="input-label">Duration (min)</label>
+        <input
+          type="number"
+          id="timer-duration-input"
+          class="text-input timer-duration-input"
+          min="1"
+          max="120"
+          value="25"
+          aria-label="Timer duration in minutes"
+        />
+        <button id="timer-set-btn" class="btn">Set</button>
+      </div>
+    </section>
+
+    <section id="widget-todos" class="widget">
+      <h2 class="widget__heading">To-Do List</h2>
+      <div class="todo-input-row">
+        <label for="todo-input" class="sr-only">New task</label>
+        <input
+          type="text"
+          id="todo-input"
+          class="text-input"
+          placeholder="Add a task…"
+          aria-label="New task title"
+        />
+        <button id="todo-add-btn" class="btn btn--primary">Add</button>
+      </div>
+      <ul id="todo-list" class="item-list" aria-label="Task list"></ul>
+    </section>
+
+    <section id="widget-bookmarks" class="widget">
+      <h2 class="widget__heading">Quick Links</h2>
+      <div class="bookmark-input-group">
+        <label for="bookmark-label-input" class="input-label">Label</label>
+        <input
+          type="text"
+          id="bookmark-label-input"
+          class="text-input"
+          placeholder="Label"
+          aria-label="Bookmark label"
+        />
+        <label for="bookmark-url-input" class="input-label">URL</label>
+        <input
+          type="url"
+          id="bookmark-url-input"
+          class="text-input"
+          placeholder="https://example.com"
+          aria-label="Bookmark URL"
+        />
+        <button id="bookmark-add-btn" class="btn btn--primary">Add Link</button>
+      </div>
+      <ul id="bookmark-list" class="bookmark-list" aria-label="Quick links list"></ul>
+    </section>
+
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
