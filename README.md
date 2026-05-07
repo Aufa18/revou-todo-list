@@ -46,7 +46,7 @@ todo-list-live-dashboard/
 
 ## Live Demo
 
-🌐 https://aufa18.github.io/revou-todo-list/
+🌐 https://aufa18.github.io/CodingCamp-4May26-Aufa/
 
 ---
 
